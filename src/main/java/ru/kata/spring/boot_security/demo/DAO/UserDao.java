@@ -6,8 +6,10 @@ import ru.kata.spring.boot_security.demo.model.User;
 
 import javax.transaction.Transactional;
 
+
 @Repository
 @Transactional
-public interface UserDAO extends JpaRepository<User, Integer> {
+public interface UserDao extends JpaRepository<User, Integer> {
     User findByUsername(String username);
 }
+

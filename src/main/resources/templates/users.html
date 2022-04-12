@@ -1,16 +1,18 @@
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>User List</title>
     <style>
-        /*.buttonEdit {*/
-        /*    background: gold;*/
-        /*}*/
+        .buttonEdit {
+            background: gold;
+        }
 
-        /*.buttonDelete {*/
-        /*    background: gold;*/
-        /*}*/
+        .buttonDelete {
+            background: gold;
+        }
 
         button {
             background: gold;
@@ -24,7 +26,6 @@
 <body>
 <h1>Users</h1>
 <button onclick="window.location.href = '/admin/add';">Add new user</button>
-<button class="buttonLogout" onclick="window.location.href = '/logout';">Logout</button>
 <br>
 <br>
 <table align="left" border="5" bgcolor="olive" width="300" height="75">
@@ -33,28 +34,27 @@
         <th>Name</th>
         <th>Surname</th>
         <th>BirthYear</th>
-<!--        <th>Edit</th>-->
-<!--        <th>Delete</th>-->
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="user : ${users}">
         <td th:utext="${user.id}">UserId</td>
         <td th:utext="${user.name}">Name</td>
         <td th:utext="${user.surname}">Surname</td>
         <td th:utext="${user.birthYear}">BirthYear</td>
-
-<!--        <td>-->
-<!--            <form th:action="@{'edit/' + ${user.id}}">-->
-<!--                <input type="submit" class="buttonEdit" value="Edit"/>-->
-<!--            </form>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--            <form th:action="@{'delete/' + ${user.id}}" th:method="DELETE">-->
-<!--                <input type="submit" class="buttonDelete" value="Delete"/>-->
-<!--            </form>-->
-<!--        </td>-->
+        <td>
+            <form th:action="@{'edit/' + ${user.id}}">
+                <input type="submit" class="buttonEdit" value="Edit"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'delete/' + ${user.id}}" th:method="DELETE">
+                <input type="submit" class="buttonDelete" value="Delete"/>
+            </form>
+        </td>
 
     </tr>
 </table>
-
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Logout</button>
 </body>
 </html>

@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleServiceImpl;
 import ru.kata.spring.boot_security.demo.service.UserServiceImpl;
@@ -17,6 +14,7 @@ import java.util.List;
 
 @Controller
 public class AdminController {
+
     private UserServiceImpl userServiceImpl;
     private final RoleServiceImpl roleService;
 
@@ -68,7 +66,7 @@ public class AdminController {
     }
 
     @PostMapping("admin/add")
-    public String pageAdd(@RequestParam("role") List<Integer>  roles,
+    public String pageAdd(@RequestParam("role") List<Integer> roles,
                           @ModelAttribute("user") @Valid User user,
                           BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -85,4 +83,6 @@ public class AdminController {
         userServiceImpl.deleteById(id);
         return "redirect:/admin";
     }
+
+
 }
